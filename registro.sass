@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap')
+    
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap')
+
+$txt1: 'Fredoka One', cursive
+$txt2: 'Roboto', sans-serif
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: 'Fredoka One', cursive
+
+html
+    height: 100%
+body
+    background-image: url("bg.svg")
+    height: 100%
+    min-height: 100vh
+    overflow: hidden
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    color: white
+    padding: 3rem
+
+.blur
+    position: fixed
+    width: 100vw
+    height: 100vh
+    background: rgba(255,255,255,0.3)
+    backdrop-filter: blur(10px)
+    top: 0
+    left: 0
+    z-index: -1
+
+label
+    padding: 1rem
+    font-family: $txt1
+    border: 2px solid white
+    width: 100%
+    border-radius: 9999px
+    font-size: 1.25rem
+    color: white
+    cursor: pointer
+    background: linear-gradient(45deg, #f6adf9, #8600e2, #40f0ff)
+    text-align: center
+
+form
+    height: 55vh
+    padding: 2rem 1.4rem
+    background: rgba(255,255,255,0.3)
+    width: 100%
+    border-radius: 2.3rem
+    backdrop-filter: blur(25px)
+    border-top: 1px solid white
+    border-left: 1px solid white
+    display: grid
+    place-items: center
+    input
+        padding: 1rem
+        border-radius: 9999px
+        border: 2px solid white
+        width: 100%
+        font-family: $txt2
+        &:focus
+            outline: 2px solid #40f0ff

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Txtileros</title>
+    <link rel="stylesheet" href="public/registro.css"><script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </head>
+  <body> 
+    <div class="blur"></div>
+    <h1>Registro</h1>
+    <form action="register.php" method="POST">
+      <input name="nombre" type="text" placeholder="Nombre" minlength="3" maxlength="25" required>
+      <input name="apellido" type="text" placeholder="Apellido" minlength="3" maxlength="25" required>
+      <input name="clave" type="password" placeholder="Contraseña" minlength="3" maxlength="25" required>
+      <input type="password" placeholder="Repite la contraseña" minlength="3" maxlength="25" required>
+      <input type="submit" id="submitForm" hidden>
+    </form>
+    <label for="submitForm">Registrarse </label>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"> </script>
+    <script src="registro.js"> </script>
+  </body>
+</html>

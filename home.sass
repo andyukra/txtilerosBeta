@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap')
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap')
+
+$txt1: 'Fredoka One', cursive
+$txt2: 'Roboto', sans-serif
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: 'Fredoka One', cursive
+
+html
+    height: 100%
+body
+    height: 100%
+    min-height: 100vh
+    overflow-x: hidden
+    padding: 1rem 0 1rem 0
+    background: #fafafa
+
+//L O A D E R
+.blob
+    width: 170px
+    height: 170px
+    display: grid
+    background: #ffffff8e
+    filter: blur(8.8px) contrast(10)
+    padding: 17px
+    mix-blend-mode: darken
+    &:after
+        --s: -1
+.blob:before,
+.blob:after
+    content: ""
+    grid-area: 1/1
+    margin: 52px 0
+    border-radius: 170px
+    background: #474bff
+    animation: bo4 2s infinite linear
+@keyframes bo4
+    100%
+        transform: rotate(calc(var(--s,1)*1turn))
+//M O D A L 
+.modalImg
+    width: 100vw
+    height: 100vh
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 100
+    background: rgba(0,0,0,.7)
+    backdrop-filter: blur(7px)
+    display: none
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    #closeModalImg
+        font-size: 3rem
+        color: white
+        position: absolute
+        top: 1.5rem
+        right: 1.5rem
+        cursor: pointer
+        z-index: 101
+        transition: 0.4s
+        &:hover
+            color: red
+    img
+        max-width: 90vw
+        max-height: 90vh
+        border-radius: 1rem
+
+.loader
+    width: 100vw
+    height: 100vh
+    z-index: 100
+    position: fixed
+    top: 0
+    left: 0
+    background: rgba(255,255,255,.85)
+    backdrop-filter: blur(10px)
+    display: none
+    gap: 2rem
+    align-items: center
+    justify-content: center
+    flex-direction: column
+.modalPub
+    width: 100vw
+    height: 100vh
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 100
+    background: rgba(0,0,0,.7)
+    backdrop-filter: blur(7px)
+    display: none
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    #closeModal
+        font-size: 3rem
+        color: white
+        position: fixed
+        top: 1.5rem
+        right: 1.5rem
+        cursor: pointer
+        z-index: 101
+    h1
+        color: white
+        margin: 2rem 0
+    form
+        width: 90%
+        display: flex
+        flex-direction: column
+        gap: 1rem
+        .btns
+            display: flex
+            width: 100%
+            gap: 0.5rem
+            align-items: center
+            justify-content: space-around
+            label
+                display: flex
+                justify-content: center
+                align-items: center
+                flex-direction: column
+                gap: 1rem
+                padding: 1rem
+                color: white
+                cursor: pointer
+                ion-icon
+                    font-size: 3rem
+        textarea
+            width: 100%
+            resize: none
+            font-family: $txt2
+            padding: 1rem
+            border-radius: 1rem
+            border: none
+            font-size: 1.5rem
+            &:focus
+                outline: none
+        button
+            padding: 1rem
+            font-family: $txt1
+            border: 2px solid white
+            width: 100%
+            border-radius: 9999px
+            font-size: 1.25rem
+            color: white
+            cursor: pointer
+            background: linear-gradient(45deg, #f6adf9, #8600e2, #40f0ff)
+
+//ACTIVES
+.activeTab
+    background: #fafafa
+    border-top: 10px solid #5bffbb
+    ion-icon
+        color: #8f03ec !important
+    p
+        color: #8f03ec !important
+    &::after
+        content: ''
+        position: absolute
+        bottom: 0
+        right: -15px
+        width: 15px
+        height: 15px
+        background: white
+        border-bottom-left-radius: 1rem
+        box-shadow: -7.5px 7.5px 0 5px #fafafa
+    &::before
+        content: ''
+        position: absolute
+        bottom: 0
+        left: -15px
+        width: 15px
+        height: 15px
+        background: white
+        border-bottom-right-radius: 1rem
+        box-shadow: 7.5px 7.5px 0 5px #fafafa
+.activeComments
+    display: flex !important
+//D O M
+//H E A D E R
+header
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    nav
+        width: 100%
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding: 0 1rem
+        h1
+            font-size: 1.3rem
+            letter-spacing: 3px
+        .navIcons
+            display: flex
+            gap: 1rem
+            align-items: center
+            cursor: pointer
+            ion-icon
+                font-size: 1.5rem
+                color: rgba(0,0,0,.5)
+    .tabs
+        display: flex
+        align-items: center
+        overflow-x: auto
+        margin: 1rem 0
+        max-width: 100%
+        width: 100%
+        background: white
+        &::-webkit-scrollbar
+            display: none
+        .tab
+            padding: 0.5rem 1.3rem
+            cursor: pointer
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            gap: 0.3rem
+            position: relative
+            p
+                color: rgba(0,0,0,.5)
+            ion-icon
+                font-size: 2.5rem
+                color: rgba(0,0,0,.5)
+
+//M A I N
+main
+    .container
+        width: 100%
+        display: flex
+        flex-direction: column
+        gap: 1rem
+        @media (min-width: 700px)
+            width: 50%
+            margin: auto
+        article
+            width: 100%
+            display: flex
+            flex-direction: column
+            gap: 0.5rem
+            padding: 1rem
+            background: white
+            border-radius: 2rem
+            box-shadow: 0 0 15px rgba(0,0,0,.01)
+            .cardHeader
+                display: flex
+                align-items: center
+                justify-content: space-between
+                position: relative
+                .cardHeaderOpts
+                    & > ion-icon
+                        font-size: 1.5rem
+                        cursor: pointer
+                        color: rgba(0, 0, 0, 0.5)
+                    .pubOpts
+                        background: #3535359d
+                        backdrop-filter: blur(7px)
+                        z-index: 10
+                        width: 80%
+                        position: absolute
+                        right: 2rem
+                        border-radius: 1rem
+                        display: none
+                        div
+                            display: flex
+                            padding: 1rem
+                            justify-content: space-between
+                            align-items: center
+                            color: white
+                            cursor: pointer
+                            ion-icon
+                                font-size: 1.5rem
+                                color: white
+                .cardHeaderAutor
+                    display: flex
+                    align-items: center
+                    gap: 0.4rem
+                    ion-icon
+                        font-size: 3rem
+                    img
+                        width: 50px
+                        height: 50px
+                        border-radius: 99999px
+                        box-shadow: 0 1px 1px rgba(0,0,0,.25)
+                    .autorInfo
+                        p
+                            font-size: 0.7rem
+                            color: rgba(0, 0, 0, 0.5)
+            .cardBody
+                .cardBodyImg
+                    cursor: pointer
+                    img
+                        width: 100%
+                        border-radius: 1rem
+                        box-shadow: 0 2px 2px rgba(0,0,0,.25)
+                .cardBodyDoc
+                    padding: 1rem
+                    background: rgba(0,0,0,.05)
+                    border-radius: 1rem
+                    display: flex
+                    justify-content: space-around
+                    align-items: center
+                    transition: 0.5s
+                    &:hover
+                        background: #90f19962
+                    a
+                        text-decoration: none
+                        display: block
+                        width: 100%
+                        height: 100%
+                        word-break: break-all
+                    ion-icon
+                        font-size: 2rem
+                        color: #31a14c
+                        cursor: pointer
+                .cardBodyText
+                    margin: 0.5rem 0
+                    p
+                        font-family: $txt2
+                        font-weight: bold
+                        word-break: break-all
+                        color: rgba(0,0,0,.8)
+            .cardFooter
+                display: flex
+                gap: 1.5rem
+                padding-left: 0.5rem
+                & > div
+                    display: flex
+                    gap: 0.4rem
+                    align-items: center
+                    p
+                        font-size: 0.8rem
+                        color: rgba(0,0,0,.5)
+                    ion-icon
+                        color: rgba(0,0,0,.5)
+                        font-size: 1.2rem
+                        cursor: pointer
+            .commentsBX
+                padding: 1rem 0
+                display: none
+                align-items: center
+                justify-content: space-between
+                flex-direction: column
+                gap: 0.5rem
+                h3
+                    color: rgba(0,0,0,.25)
+                    text-align: center
+                    margin: 1rem 0
+                .commentsInput
+                    width: 100%
+                    position: relative
+                    input
+                        width: 100%
+                        padding: 1rem 1.3rem
+                        border: none
+                        border-radius: 9999px
+                        background: rgba(0,0,0,.03)
+                        font-family: $txt2
+                        &:focus
+                            outline: none
+                    button
+                        border: none
+                        font-size: 1.3rem
+                        background: transparent
+                        position: absolute
+                        top: 0.8rem
+                        right: 1rem
+                        color: #8809f0a2
+                        cursor: pointer

@@ -1,0 +1,440 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fredoka One", cursive;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 1rem 0 1rem 0;
+  background: #fafafa;
+}
+
+.blob {
+  width: 170px;
+  height: 170px;
+  display: grid;
+  background: #ffffff8e;
+  filter: blur(8.8px) contrast(10);
+  padding: 17px;
+  mix-blend-mode: darken;
+}
+.blob:after {
+  --s: -1;
+}
+
+.blob:before,
+.blob:after {
+  content: "";
+  grid-area: 1/1;
+  margin: 52px 0;
+  border-radius: 170px;
+  background: #474bff;
+  animation: bo4 2s infinite linear;
+}
+
+@keyframes bo4 {
+  100% {
+    transform: rotate(calc(var(--s,1)*1turn));
+  }
+}
+.modalImg {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(7px);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modalImg #closeModalImg {
+  font-size: 3rem;
+  color: white;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+  z-index: 101;
+  transition: 0.4s;
+}
+.modalImg #closeModalImg:hover {
+  color: red;
+}
+.modalImg img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 1rem;
+}
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  display: none;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modalPub {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(7px);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modalPub #closeModal {
+  font-size: 3rem;
+  color: white;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+  z-index: 101;
+}
+.modalPub h1 {
+  color: white;
+  margin: 2rem 0;
+}
+.modalPub form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modalPub form .btns {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-around;
+}
+.modalPub form .btns label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  color: white;
+  cursor: pointer;
+}
+.modalPub form .btns label ion-icon {
+  font-size: 3rem;
+}
+.modalPub form textarea {
+  width: 100%;
+  resize: none;
+  font-family: "Roboto", sans-serif;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
+  font-size: 1.5rem;
+}
+.modalPub form textarea:focus {
+  outline: none;
+}
+.modalPub form button {
+  padding: 1rem;
+  font-family: "Fredoka One", cursive;
+  border: 2px solid white;
+  width: 100%;
+  border-radius: 9999px;
+  font-size: 1.25rem;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(45deg, #f6adf9, #8600e2, #40f0ff);
+}
+
+.activeTab {
+  background: #fafafa;
+  border-top: 10px solid #5bffbb;
+}
+.activeTab ion-icon {
+  color: #8f03ec !important;
+}
+.activeTab p {
+  color: #8f03ec !important;
+}
+.activeTab::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -15px;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-bottom-left-radius: 1rem;
+  box-shadow: -7.5px 7.5px 0 5px #fafafa;
+}
+.activeTab::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -15px;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 7.5px 7.5px 0 5px #fafafa;
+}
+
+.activeComments {
+  display: flex !important;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+header nav h1 {
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+}
+header nav .navIcons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+}
+header nav .navIcons ion-icon {
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+header .tabs {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  margin: 1rem 0;
+  max-width: 100%;
+  width: 100%;
+  background: white;
+}
+header .tabs::-webkit-scrollbar {
+  display: none;
+}
+header .tabs .tab {
+  padding: 0.5rem 1.3rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  position: relative;
+}
+header .tabs .tab p {
+  color: rgba(0, 0, 0, 0.5);
+}
+header .tabs .tab ion-icon {
+  font-size: 2.5rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+main .container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 700px) {
+  main .container {
+    width: 50%;
+    margin: auto;
+  }
+}
+main .container article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 2rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.01);
+}
+main .container article .cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+main .container article .cardHeader .cardHeaderOpts > ion-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+}
+main .container article .cardHeader .cardHeaderOpts .pubOpts {
+  background: #3535359d;
+  backdrop-filter: blur(7px);
+  z-index: 10;
+  width: 80%;
+  position: absolute;
+  right: 2rem;
+  border-radius: 1rem;
+  display: none;
+}
+main .container article .cardHeader .cardHeaderOpts .pubOpts div {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+main .container article .cardHeader .cardHeaderOpts .pubOpts div ion-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+main .container article .cardHeader .cardHeaderAutor {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+main .container article .cardHeader .cardHeaderAutor ion-icon {
+  font-size: 3rem;
+}
+main .container article .cardHeader .cardHeaderAutor img {
+  width: 50px;
+  height: 50px;
+  border-radius: 99999px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+main .container article .cardHeader .cardHeaderAutor .autorInfo p {
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+main .container article .cardBody .cardBodyImg {
+  cursor: pointer;
+}
+main .container article .cardBody .cardBodyImg img {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+main .container article .cardBody .cardBodyDoc {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: 0.5s;
+}
+main .container article .cardBody .cardBodyDoc:hover {
+  background: #90f19962;
+}
+main .container article .cardBody .cardBodyDoc a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  word-break: break-all;
+}
+main .container article .cardBody .cardBodyDoc ion-icon {
+  font-size: 2rem;
+  color: #31a14c;
+  cursor: pointer;
+}
+main .container article .cardBody .cardBodyText {
+  margin: 0.5rem 0;
+}
+main .container article .cardBody .cardBodyText p {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  word-break: break-all;
+  color: rgba(0, 0, 0, 0.8);
+}
+main .container article .cardFooter {
+  display: flex;
+  gap: 1.5rem;
+  padding-left: 0.5rem;
+}
+main .container article .cardFooter > div {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+main .container article .cardFooter > div p {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+main .container article .cardFooter > div ion-icon {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+main .container article .commentsBX {
+  padding: 1rem 0;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+main .container article .commentsBX h3 {
+  color: rgba(0, 0, 0, 0.25);
+  text-align: center;
+  margin: 1rem 0;
+}
+main .container article .commentsBX .commentsInput {
+  width: 100%;
+  position: relative;
+}
+main .container article .commentsBX .commentsInput input {
+  width: 100%;
+  padding: 1rem 1.3rem;
+  border: none;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.03);
+  font-family: "Roboto", sans-serif;
+}
+main .container article .commentsBX .commentsInput input:focus {
+  outline: none;
+}
+main .container article .commentsBX .commentsInput button {
+  border: none;
+  font-size: 1.3rem;
+  background: transparent;
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  color: #8809f0a2;
+  cursor: pointer;
+}
