@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background-image: url("bg.svg");
+  background-image: url("bg.jpg");
   height: 100%;
   min-height: 100vh;
   overflow: hidden;

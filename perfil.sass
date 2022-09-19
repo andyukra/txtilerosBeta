@@ -56,26 +56,83 @@ body
     justify-content: center
     flex-direction: column
 
-#changeAvatar
+header
     width: 100%
     height: 40vh
-    background: white
+    background: #a964ff
     display: flex
     align-items: center
     flex-direction: column
-    justify-content: end
+    justify-content: center
     padding-bottom: 1rem
-    label
+    position: relative
+    cursor: pointer
+    &::after
+        content: ''
+        position: absolute
+        bottom: -1px
+        width: 100%
+        height: 80px
+        background: linear-gradient(transparent, #fafafa)
+    h2, p
+        color: white
+        text-shadow: 0 0 3px black
+    .upPortada
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        z-index: 0
+    .upAvatar
         cursor: pointer
+        position: relative
+        z-index: 1
     ion-icon
         font-size: 7rem
+        color: white
+        text-shadow: 0 0 5px black
     img
         width: 150px
         height: 150px
         border-radius: 99999px
-        box-shadow: 0 2px 15px rgba(0,0,0,.25)
+        box-shadow: 0 0 20px 5px #0000006e
+        border: 5px solid white
 
 main
     margin: 1rem 0
+    p
+        text-align: center
+        color: rgba(0,0,0,.5)
+        margin: 0.5rem 0
     h2
         text-align: center
+    .fotosBX
+        margin: 1.5rem
+        h3
+            text-align: center
+            color: rgba(0,0,0,.5)
+        button
+            border-radius: 0.5rem
+            box-shadow: 0 0 7px #40f0ff
+            width: 4rem
+            height: 4rem
+            display: grid
+            place-items: center
+            font-size: 2rem
+            background: linear-gradient(45deg, #f6adf9, #8600e2, #40f0ff)
+            border: none
+            color: white
+            cursor: pointer
+            transform: rotateZ(45deg)
+
+
+
+
+
+
+
+
+
+
+

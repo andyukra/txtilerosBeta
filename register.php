@@ -1,7 +1,7 @@
 <?php
     include 'DB.php';
 
-    if(isset($_POST) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['clave'])) {
+    if(isset($_POST)) {
         
         $conn = dbConnect();
         $nombre = $_POST['nombre'];
@@ -16,11 +16,7 @@
     
         $result = mysqli_query($conn, $query);
 
-        if($result == 1) {
-            header('Location:index.html');
-        } else {
-            die('Problema en el registro, intente nuevamente mas tarde');
-        }
+        header('Location:index.html');
 
     }
 

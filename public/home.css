@@ -47,6 +47,116 @@ body {
     transform: rotate(calc(var(--s,1)*1turn));
   }
 }
+.modalComments {
+  height: 90vh;
+  width: 90vw;
+  margin: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 0 15px #ff3aff91;
+  padding: 2rem;
+  display: none;
+}
+@media (max-width: 700px) {
+  .modalComments {
+    padding: 1rem;
+    width: 95vw;
+  }
+}
+.modalComments .closeComments {
+  height: 20px;
+  width: 100px;
+  margin: auto;
+  cursor: pointer;
+  border-top: 5px solid rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.modalComments .closeComments::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 70%;
+  height: 5px;
+  left: 16px;
+  background: rgba(0, 0, 0, 0.3);
+}
+.modalComments .commentsBX {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  padding: 0 1rem 8rem 0;
+}
+.modalComments .commentsBX article .comentario {
+  margin: 1rem 0;
+}
+.modalComments .commentsBX article .comentario p {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #8f03ec09;
+  font-family: "Roboto", sans-serif;
+  word-break: break-all;
+  box-shadow: 0 5px 5px #2e00630a;
+}
+.modalComments .commentsBX article .cardHeader .cardHeaderAutor {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.modalComments .commentsBX article .cardHeader .cardHeaderAutor img {
+  width: 40px;
+  height: 40%;
+  border-radius: 9999px;
+}
+.modalComments .commentsBX article .cardHeader .cardHeaderAutor .autorInfo p {
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.25);
+}
+.modalComments .commentsBX h2 {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.25);
+}
+.modalComments .commentsInput {
+  width: 100%;
+  display: flex;
+  position: relative;
+  margin-top: 2rem;
+}
+.modalComments .commentsInput input {
+  padding: 1rem;
+  border-radius: 9999px;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  border: none;
+  background: rgba(0, 0, 0, 0.03);
+}
+.modalComments .commentsInput input:focus {
+  outline: none;
+}
+.modalComments .commentsInput button {
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  position: absolute;
+  top: 0.7rem;
+  right: 1.3rem;
+}
+.modalComments .commentsInput button ion-icon {
+  color: #36946d;
+  font-size: 1.7rem;
+}
+
 .modalImg {
   width: 100vw;
   height: 100vh;
@@ -206,10 +316,6 @@ body {
   box-shadow: 7.5px 7.5px 0 5px #fafafa;
 }
 
-.activeComments {
-  display: flex !important;
-}
-
 header {
   display: flex;
   flex-direction: column;
@@ -221,7 +327,13 @@ header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background: #ffffff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 header nav h1 {
   font-size: 1.3rem;
@@ -241,7 +353,7 @@ header .tabs {
   display: flex;
   align-items: center;
   overflow-x: auto;
-  margin: 1rem 0;
+  margin: 3rem 0 1.5rem 0;
   max-width: 100%;
   width: 100%;
   background: white;
@@ -398,43 +510,5 @@ main .container article .cardFooter > div p {
 main .container article .cardFooter > div ion-icon {
   color: rgba(0, 0, 0, 0.5);
   font-size: 1.2rem;
-  cursor: pointer;
-}
-main .container article .commentsBX {
-  padding: 1rem 0;
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-main .container article .commentsBX h3 {
-  color: rgba(0, 0, 0, 0.25);
-  text-align: center;
-  margin: 1rem 0;
-}
-main .container article .commentsBX .commentsInput {
-  width: 100%;
-  position: relative;
-}
-main .container article .commentsBX .commentsInput input {
-  width: 100%;
-  padding: 1rem 1.3rem;
-  border: none;
-  border-radius: 9999px;
-  background: rgba(0, 0, 0, 0.03);
-  font-family: "Roboto", sans-serif;
-}
-main .container article .commentsBX .commentsInput input:focus {
-  outline: none;
-}
-main .container article .commentsBX .commentsInput button {
-  border: none;
-  font-size: 1.3rem;
-  background: transparent;
-  position: absolute;
-  top: 0.8rem;
-  right: 1rem;
-  color: #8809f0a2;
   cursor: pointer;
 }

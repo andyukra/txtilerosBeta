@@ -21,10 +21,11 @@
         if($pub['imagen']) unlink($pub['imagen']);
         if($pub['documento']) unlink($pub['documento']);
 
-        $query = $query = "DELETE from `publicaciones` WHERE id = '$id' AND autor = '$me'";
-
+        $query = "DELETE from `publicaciones` WHERE id = '$id' AND autor = '$me'";
         mysqli_query($conn, $query);
-
+        $query = "DELETE from `comentarios` WHERE `idPub` = '$id'";
+        mysqli_query($conn, $query);
+        
         echo 'OK';
 
     }

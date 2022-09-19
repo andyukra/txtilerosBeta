@@ -7,7 +7,7 @@ if (!$_SESSION['user']) {
   die();
 }
 $me = $_SESSION['user'];
-$query = "SELECT `foto` FROM `usuarios` WHERE `nombre` = '$me'";
+$query = "SELECT `foto`, `portada` FROM `usuarios` WHERE `nombre` = '$me'";
 $conn = dbConnect();
 
 $res = mysqli_query($conn, $query);
@@ -21,6 +21,15 @@ function imgPerfil($user)
   } else {
     $foto = $user['foto'];
     return "<img src='{$foto}' alt='Foto de perfil'/>";
+  }
+}
+function imgPortada($user)
+{
+  if (!$user['portada']) {
+    return '';
+  } else {
+    $foto = $user['portada'];
+    return "<img src='{$foto}' hidden id='portada'/>";
   }
 }
 ?>
@@ -42,16 +51,24 @@ function imgPerfil($user)
   <div class="loader">
     <div class="blob"></div>
   </div>
-  <form id="changeAvatar">
+  <header>
+    <?php echo imgPortada($user); ?>
+    <input type="file" id="upPortada" hidden accept="image/*">
     <input id="upAvatar" type="file" hidden accept="image/*">
-    <label for="upAvatar">
+    <label class="upPortada" for="upPortada">
+    </label>
+    <label class="upAvatar" for="upAvatar">
       <?php echo imgPerfil($user); ?>
     </label>
     <h2><?php echo $me; ?></h2>
-    <p>Estado</p>
-  </form>
+  </header>
   <main>
-    <h2>Mis publicaciones</h2>
+    <p>Ya se puede poner foto de portada :)</p>
+    <h2>MIS FOTOS</h2>
+    <div class="fotosBX">
+      <button><ion-icon name="add"></ion-icon></button>
+      <h3>Por el momento no tenes fotos :(</h3>
+    </div>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"> </script>
   <script src="perfil.js"> </script>

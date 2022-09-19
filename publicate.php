@@ -7,7 +7,10 @@
         if($img['size'] > 15000000) die('La imagen es muy pesada, solo se permite 15MB');
         if(!in_array($img['type'], $filter)) die('Archivo de imagen no compatible');
         $filename = explode(' ', microtime())[1].'.'.pathinfo($img['name'], PATHINFO_EXTENSION);
-        move_uploaded_file($img['tmp_name'], realpath('./files/imgs').'/'.$filename);
+
+        $imgCompressed = compressImg($img['tmp_name']);
+        imagejpeg($imgCompressed, realpath('./files/imgs').'/'.$filename, 75);
+
         return 'files/imgs/'.$filename;
     }
 

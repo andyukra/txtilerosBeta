@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url("bg.svg");
+  background-image: url("bg.jpg");
   overflow: hidden;
   display: flex;
   flex-direction: column;
