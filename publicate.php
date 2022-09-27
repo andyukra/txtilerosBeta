@@ -8,16 +8,19 @@
         if(!in_array($img['type'], $filter)) die('Archivo de imagen no compatible');
         $filename = explode(' ', microtime())[1].'.'.pathinfo($img['name'], PATHINFO_EXTENSION);
 
-        $imgCompressed = compressImg($img['tmp_name']);
-        imagejpeg($imgCompressed, realpath('./files/imgs').'/'.$filename, 75);
+        if($img['type'] == 'image/gif') {
+            move_uploaded_file($img['tmp_name'], realpath('./files/imgs').'/'.$filename);
+        } else {
+            $imgCompressed = compressImg($img['tmp_name']);
+            imagejpeg($imgCompressed, realpath('./files/imgs').'/'.$filename, 75);
+        }
 
         return 'files/imgs/'.$filename;
     }
 
     function docProcess($doc, $filter) {
-        if($doc['size'] > 70000000) die('La imagen es muy pesada, solo se permite 70MB');
+        if($doc['size'] > 70000000) die('El archivo es muy pesado, solo se permite 70MB');
         if(!in_array($doc['type'], $filter)) die('Archivo de documento no compatible');
-        $filename = explode(' ', microtime())[1].'.'.pathinfo($doc['name'], PATHINFO_EXTENSION);
         $newName = str_replace(' ', '_', $doc['name']);
         move_uploaded_file($doc['tmp_name'], realpath('./files/docs').'/'.$newName);
         return 'files/docs/'.$newName;
@@ -29,7 +32,7 @@
         $me = $_SESSION['user'];
         if(!$me) die('No esta autorizado a publicar');
         $filterImgs = array('image/gif', 'image/jpeg', 'image/jpg', 'image/png');
-        $filterDocs = array('application/msword', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/vnd.ms-excel', 'plain/text');
+        $filterDocs = array('application/msword', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/vnd.ms-excel', 'plain/text', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.wordprocessingml.template', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.presentationml.slideshow', 'application/vnd.openxmlformats-officedocument.presentationml.template');
         $text = $_POST['text'] ?? '';
         $category = $_POST['category'];
         $image = ($_FILES['image']['size'] > 0) ? $_FILES['image'] : '';
@@ -58,5 +61,3 @@
         header('Location:home.php');
 
     }
-
-?>

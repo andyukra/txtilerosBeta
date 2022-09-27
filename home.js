@@ -13,6 +13,23 @@ let dislikes = localStorage.getItem('dislikes');
 if(!likes) localStorage.setItem('likes', '');
 if(!dislikes) localStorage.setItem('dislikes', '');
 
+//H E L P E R S
+function filterYT(text) {
+  let code = null;
+  if(text.match(/youtube\.com\/watch\?v\=(\w){11}/gi) || text.match(/youtu.be\/(\w){11}/gi)) {
+    code = text.match(/\w{11}$/ig);
+    return `<div class="cardBodyText"><p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/${code}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </p></div>`;
+  }
+
+  if(text) {
+    return `<div class="cardBodyText"><p>${text}</p></div>`;
+  } else {
+    return '';
+  }
+}
+
 
 $(function () {
   //H A N D L E R S
@@ -62,7 +79,7 @@ $(function () {
     let card = pubs.map((x) => {
       return `<article id=${x.id}>
             <div class="cardHeader">
-                <div class="cardHeaderAutor">
+                <div class="cardHeaderAutor" autor="${x.autor}">
                     ${
                       x.foto
                         ? `<img src="${x.foto}" alt="foto de perfil"/>`
@@ -96,11 +113,7 @@ $(function () {
                 </div>
                 </div>
                 <div class="cardBody">
-                    ${
-                      x.texto
-                        ? `<div class="cardBodyText"><p>${x.texto}</p></div>`
-                        : ""
-                    }                
+                    ${filterYT(x.texto)}                
                     ${
                       x.imagen
                         ? `<div class="cardBodyImg"><img src=${x.imagen}></div>`
@@ -159,6 +172,7 @@ $(function () {
           $(".commentsBX").append("<h2>No hay comentarios :(</h2>");
           $(".commentsInput").attr('idPub', idPub);
           $(".modalComments").slideDown(200);
+          return;
         }
         comments = JSON.parse(res);
         $(".commentsBX").empty();
@@ -214,6 +228,12 @@ $(function () {
         const response = await res.text();
         if (response === "OK") location.href = location.href;
       }
+    });
+
+    //GO TO PERFIL PAGE
+    $('.cardHeaderAutor').click(function (e) {
+      const autor = $(this).attr('autor'); 
+      location.href = `perfil.php?user=${autor}`;
     });
   }
 

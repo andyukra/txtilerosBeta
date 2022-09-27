@@ -2,18 +2,24 @@
 include 'DB.php';
 
 session_start();
-if (!$_SESSION['user']) {
-  header('Location:index.html');
-  die();
+$me = $_SESSION['user'] ?? '';
+$user = null;
+
+if(isset($_GET)) {
+
+  $userPerfil = $_GET['user'] ?? '';
+  if(!$userPerfil) die('No se especifico un usuario');
+  $query = "SELECT `foto`, `portada`, `nombre` FROM `usuarios` WHERE `nombre` = '$userPerfil'";
+  $conn = dbConnect();
+  $res = mysqli_query($conn, $query);
+  if (!$res) die('No se pudo obtener los datos del usuario');
+  $user = mysqli_fetch_assoc($res);
+  if(!$user) die('El usuario no existe');
+
 }
-$me = $_SESSION['user'];
-$query = "SELECT `foto`, `portada` FROM `usuarios` WHERE `nombre` = '$me'";
-$conn = dbConnect();
 
-$res = mysqli_query($conn, $query);
+//H A N D L E R S
 
-if (!$res) die('No se pudo obtener los datos del usuario');
-$user = mysqli_fetch_assoc($res);
 function imgPerfil($user)
 {
   if (!$user['foto']) {
@@ -48,6 +54,12 @@ function imgPortada($user)
 </head>
 
 <body>
+  <p id="usuario" hidden>
+    <?php echo $user['nombre'] ?>
+  </p>
+  <p id="yo" hidden>
+    <?php echo $me; ?>
+  </p>
   <div class="loader">
     <div class="blob"></div>
   </div>
@@ -60,15 +72,10 @@ function imgPortada($user)
     <label class="upAvatar" for="upAvatar">
       <?php echo imgPerfil($user); ?>
     </label>
-    <h2><?php echo $me; ?></h2>
+    <h2><?php echo $user['nombre']; ?></h2>
   </header>
   <main>
-    <p>Ya se puede poner foto de portada :)</p>
-    <h2>MIS FOTOS</h2>
-    <div class="fotosBX">
-      <button><ion-icon name="add"></ion-icon></button>
-      <h3>Por el momento no tenes fotos :(</h3>
-    </div>
+    <h2>MIS PUBLICACIONES</h2>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"> </script>
   <script src="perfil.js"> </script>

@@ -1,6 +1,16 @@
 $(async function(){
 
     //I N I T I A L I Z A C I O N
+    let stateChanges = false;
+    let yo = $('#yo').text();
+    let usuario = $('#usuario').text();
+
+    if(usuario !== yo) {
+        $('#upAvatar').attr('disabled', 'true');
+        $('#upPortada').attr('disabled', 'true');
+    }
+    
+
     if($('#portada').length) {
         $('header').css({
             backgroundImage: `url(${$('#portada').attr('src')})`,

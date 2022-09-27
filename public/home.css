@@ -279,7 +279,7 @@ body {
   border-radius: 9999px;
   font-size: 1.25rem;
   color: white;
-  cursor: pointer;
+  cursor: pointe;
   background: linear-gradient(45deg, #f6adf9, #8600e2, #40f0ff);
 }
 
@@ -341,13 +341,20 @@ header nav h1 {
 }
 header nav .navIcons {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
+}
+header nav .navIcons img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 1px 5px #33d6f3da;
   cursor: pointer;
 }
 header nav .navIcons ion-icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 header .tabs {
   display: flex;
@@ -438,6 +445,7 @@ main .container article .cardHeader .cardHeaderAutor {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  cursor: pointer;
 }
 main .container article .cardHeader .cardHeaderAutor ion-icon {
   font-size: 3rem;
@@ -486,6 +494,11 @@ main .container article .cardBody .cardBodyDoc ion-icon {
 }
 main .container article .cardBody .cardBodyText {
   margin: 0.5rem 0;
+}
+main .container article .cardBody .cardBodyText iframe {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
 }
 main .container article .cardBody .cardBodyText p {
   font-family: "Roboto", sans-serif;

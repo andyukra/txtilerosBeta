@@ -132,14 +132,13 @@ main .fotosBX h3 {
 }
 main .fotosBX button {
   border-radius: 0.5rem;
-  box-shadow: 0 0 7px #40f0ff;
-  width: 4rem;
-  height: 4rem;
+  border: 2px solid black;
+  width: 3.5rem;
+  height: 3.5rem;
   display: grid;
   place-items: center;
   font-size: 2rem;
   background: linear-gradient(45deg, #f6adf9, #8600e2, #40f0ff);
-  border: none;
   color: white;
   cursor: pointer;
   transform: rotateZ(45deg);

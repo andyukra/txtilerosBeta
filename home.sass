@@ -245,7 +245,7 @@ body
             border-radius: 9999px
             font-size: 1.25rem
             color: white
-            cursor: pointer
+            cursor: pointe
             background: linear-gradient(45deg, #f6adf9, #8600e2, #40f0ff)
 
 //ACTIVES
@@ -300,12 +300,18 @@ header
             letter-spacing: 3px
         .navIcons
             display: flex
-            gap: 1rem
+            gap: 1.5rem
             align-items: center
-            cursor: pointer
+            img
+                width: 2rem
+                height: 2rem
+                border-radius: 9999px
+                box-shadow: 0 1px 5px #33d6f3da
+                cursor: pointer
             ion-icon
-                font-size: 1.5rem
+                font-size: 2rem
                 color: rgba(0,0,0,.5)
+                cursor: pointer
     .tabs
         display: flex
         align-items: center
@@ -383,6 +389,7 @@ main
                     display: flex
                     align-items: center
                     gap: 0.4rem
+                    cursor: pointer
                     ion-icon
                         font-size: 3rem
                     img
@@ -423,6 +430,10 @@ main
                         cursor: pointer
                 .cardBodyText
                     margin: 0.5rem 0
+                    iframe
+                        width: 100%
+                        border-radius: 1rem
+                        box-shadow: 0 3px 3px rgba(0,0,0,.25)
                     p
                         font-family: $txt2
                         font-weight: bold

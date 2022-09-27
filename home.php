@@ -1,9 +1,28 @@
 <?php
+include 'DB.php';
+
 session_start();
 if (!$_SESSION['user']) {
   header('Location:index.html');
   die();
 }
+$me = $_SESSION['user'];
+$query = "SELECT `foto` FROM `usuarios` WHERE `nombre` = '$me'";
+$conn = dbConnect();
+$res = mysqli_query($conn, $query);
+$user = mysqli_fetch_assoc($res);
+
+//H A N D L E R S
+function imgPerfil($user)
+{
+  if (!$user['foto']) {
+    echo '<ion-icon name="person-circle"></ion-icon>';
+  } else {
+    $foto = $user['foto'];
+    echo "<img src='{$foto}' alt='Foto de perfil'/>";
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -66,8 +85,8 @@ if (!$_SESSION['user']) {
         <ion-icon id="addPub" style="color:#8f03ec;font-size:2rem" name="add-circle"></ion-icon>
         <ion-icon name="search"></ion-icon>
         <ion-icon name="notifications"></ion-icon>
-        <a href="perfil.php">
-          <ion-icon name="person-circle"></ion-icon>
+        <a href=<?php echo 'perfil.php?user='.$_SESSION['user'] ?>>
+          <?php imgPerfil($user); ?>
         </a>
       </div>
     </nav>
@@ -78,7 +97,7 @@ if (!$_SESSION['user']) {
       </div>
       <div class="tab" tab="maria">
         <ion-icon name="time"></ion-icon>
-        <p>María</p>
+        <p>Mariana</p>
       </div>
       <div class="tab" tab="ayelen">
         <ion-icon name="color-palette"></ion-icon>
@@ -98,7 +117,11 @@ if (!$_SESSION['user']) {
       </div>
       <div class="tab" tab="ingles">
         <ion-icon name="text"></ion-icon>
-        <p>Inglés</p>
+        <p>Eliana</p>
+      </div>
+      <div class="tab" tab="utilidades">
+        <ion-icon name="desktop"></ion-icon>
+        <p>Utilidades</p>
       </div>
     </div>
   </header>
